@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/view/home/popular_list_view.dart';
 import 'package:flutter_application/view/home/top_rated_list_view.dart';
-import 'package:flutter_application/view_model/up_coming_list_view.dart';
+import 'package:flutter_application/view/home/up_coming_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

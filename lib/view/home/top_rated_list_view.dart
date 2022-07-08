@@ -57,9 +57,12 @@ class _TopRatedListViewState
                   switch (
                       value.topRatedList.status) {
                     case Status.LOADING:
-                      return Center(
-                          child:
-                              CircularProgressIndicator());
+                      return Container(
+                        height: height,
+                        child: Center(
+                            child:
+                                CircularProgressIndicator()),
+                      );
                     case Status.ERROR:
                       return Text(value
                           .topRatedList

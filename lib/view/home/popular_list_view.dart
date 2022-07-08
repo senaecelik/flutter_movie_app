@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/response/status.dart';
+import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/view/home/popular_item.dart';
 import 'package:flutter_application/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,8 @@ class _PopularListViewState
             child: Consumer<HomeViewViewModel>(
                 builder: (context, value, _) {
               switch (value.moviesList.status) {
+                case Status.LOADING:
+                  return Text("");
                 case Status.ERROR:
                   return Text(value.moviesList
                       .toString());

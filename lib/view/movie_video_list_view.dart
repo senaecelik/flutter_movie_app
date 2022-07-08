@@ -47,6 +47,10 @@ class _MovieTrailerListViewState
         child: Consumer<DetailViewModel>(
             builder: (context, value, _) {
           switch (value.videoList.status) {
+            case Status.LOADING:
+              return Center(
+                  child:
+                      CircularProgressIndicator());
             case Status.ERROR:
               return Text(
                   value.videoList.toString());
@@ -63,15 +67,17 @@ class _MovieTrailerListViewState
 
   Widget _upVideoList(
       DetailViewModel value, double height) {
-    return  SizedBox(
+    return SizedBox(
       height: height * 0.7,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          itemCount: value.videoList.data!.results!.length,
+          itemCount: value
+              .videoList.data!.results!.length,
           itemBuilder: (context, index) {
             return MovieVideoTrailer(
-              video: value.videoList.data!.results![index],
+              video: value.videoList.data!
+                  .results![index],
               movie: widget.movie,
             );
           }),

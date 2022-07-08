@@ -5,7 +5,7 @@ import 'package:flutter_application/view/home/movie_list_item.dart';
 import 'package:flutter_application/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../res/color.dart';
+import '../../res/color.dart';
 
 class UpComingListView extends StatefulWidget {
   UpComingListView({Key? key}) : super(key: key);
@@ -53,6 +53,8 @@ class _UpComingListViewState
                   builder: (context, value, _) {
                 switch (
                     value.upComingList.status) {
+                  case Status.LOADING:
+                    return Text("");
                   case Status.ERROR:
                     return Text(value.upComingList
                         .toString());

@@ -47,7 +47,7 @@ class _CastListViewState
             builder: (context, value, _) {
           switch (value.castList.status) {
             case Status.LOADING:
-              return const CircularProgressIndicator();
+              return Center(child: const CircularProgressIndicator());
             case Status.ERROR:
               return Text(
                   value.castList.toString());

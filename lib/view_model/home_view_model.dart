@@ -19,17 +19,7 @@ class HomeViewViewModel with ChangeNotifier {
 
   setMoviesList(ApiResponse<Movies> response) {
     moviesList = response;
-    notifyListeners();
-  }
-
-  setUpComingMoviesList(
-      ApiResponse<Movies> response) {
     upComingList = response;
-    notifyListeners();
-  }
-
-  setUpTopRateMoviesList(
-      ApiResponse<Movies> response) {
     topRatedList = response;
     notifyListeners();
   }
@@ -47,23 +37,19 @@ class HomeViewViewModel with ChangeNotifier {
     await _upComingMovieRepo
         .getUpComingMovie()
         .then((value) {
-      setUpComingMoviesList(
-          ApiResponse.completed(value));
+      setMoviesList(ApiResponse.completed(value));
     }).onError((error, stackTrace) =>
-            setUpComingMoviesList(
-                ApiResponse.error(
-                    error.toString())));
+            setMoviesList(ApiResponse.error(
+                error.toString())));
   }
 
   Future<void> fetchTopRateListApi() async {
     await _topRateMovieRepo
         .getTopRatedMovie()
         .then((value) {
-      setUpTopRateMoviesList(
-          ApiResponse.completed(value));
+      setMoviesList(ApiResponse.completed(value));
     }).onError((error, stackTrace) =>
-            setUpTopRateMoviesList(
-                ApiResponse.error(
-                    error.toString())));
+            setMoviesList(ApiResponse.error(
+                error.toString())));
   }
 }

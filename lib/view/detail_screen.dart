@@ -146,7 +146,10 @@ class _DetailPageState extends State<DetailPage> {
         SizedBox(
           width: width * .01,
         ),
-        Text(widget.movies.voteAverage.toString(),
+        Text(
+            widget.movies.voteAverage!
+                .roundToDouble()
+                .toString(),
             style: AppStyle.instance.bodyMedium
                 .copyWith(
                     color: AppColors.redColor)),
