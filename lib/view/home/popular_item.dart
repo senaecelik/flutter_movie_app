@@ -4,6 +4,7 @@ import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/red_button.dart';
 import 'package:flutter_application/res/componenets/white_border_button.dart';
 import 'package:flutter_application/res/style/text_style.dart';
+import 'package:flutter_application/view/detail_screen.dart';
 
 class PopularItem extends StatelessWidget {
   final Results movies;
@@ -19,20 +20,30 @@ class PopularItem extends StatelessWidget {
     final width =
         MediaQuery.of(context).size.width;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment:
-          CrossAxisAlignment.start,
-      children: [
-        Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              movies.posterPath == null
-                  ? Text("N/A")
-                  : _moviePoster(height, width),
-              _movieDetail(width, height),
-            ]),
-      ],
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    DetailPage(movies: movies)));
+      },
+      child: Column(
+        mainAxisAlignment:
+            MainAxisAlignment.start,
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
+        children: [
+          Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                movies.posterPath == null
+                    ? Text("N/A")
+                    : _moviePoster(height, width),
+                _movieDetail(width, height),
+              ]),
+        ],
+      ),
     );
   }
 

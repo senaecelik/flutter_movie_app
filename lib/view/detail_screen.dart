@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/movies.dart';
-import 'package:flutter_application/models/movies_video.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/red_button.dart';
 import 'package:flutter_application/res/style/text_style.dart';
 import 'package:flutter_application/view/cast_list_view.dart';
 import 'package:flutter_application/view/movie_video_list_view.dart';
 import 'package:flutter_application/view/movie_video_trailer.dart';
+import 'package:flutter_application/view/review_list_view.dart';
 import 'package:flutter_application/view/similar_movies_list_view.dart';
 import 'package:flutter_application/view_model/detail_view_model.dart';
 
@@ -23,8 +23,6 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
- 
-
     final height =
         MediaQuery.of(context).size.height;
     final width =
@@ -42,6 +40,10 @@ class _DetailPageState extends State<DetailPage> {
             padding: const EdgeInsets.symmetric(
                 horizontal: 20),
             child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.start,
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
               children: [
                 _moviesTitleRow(width),
                 SizedBox(
@@ -95,16 +97,22 @@ class _DetailPageState extends State<DetailPage> {
                                             .grey,
                                         width:
                                             0.5))),
-                            child: TabBarView(
-                                children: [
-                                  MovieTrailerListView(
-                                      movie: widget
-                                          .movies),
-                                  SimilarMovieListView(
-                                      movie: widget
-                                          .movies),
-                                  Container(),
-                                ])),
+                            child: Container(
+                              height:
+                                  height / 1.4,
+                              child: TabBarView(
+                                  children: [
+                                    MovieTrailerListView(
+                                        movie: widget
+                                            .movies),
+                                    SimilarMovieListView(
+                                        movie: widget
+                                            .movies),
+                                    ReviewListView(
+                                        movie: widget
+                                            .movies)
+                                  ]),
+                            )),
                       ),
                     ],
                   ),
@@ -127,6 +135,8 @@ class _DetailPageState extends State<DetailPage> {
   Row _moviesDetailRow(double width) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment:
+          CrossAxisAlignment.start,
       children: [
         Icon(
           Icons.star,

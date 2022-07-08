@@ -3,12 +3,14 @@ import 'package:flutter_application/data/response/api_response.dart';
 import 'package:flutter_application/models/cast.dart';
 import 'package:flutter_application/models/movies.dart';
 import 'package:flutter_application/models/movies_video.dart';
+import 'package:flutter_application/models/review.dart';
 import 'package:flutter_application/repository/home_repository.dart';
 
 class DetailViewModel with ChangeNotifier {
   final _castRepo = HomeRepository();
   final _videoRepo = HomeRepository();
   final _similarMovieRepo = HomeRepository();
+  final _reviewMovieRepo = HomeRepository();
 
   ApiResponse<Cast> castList =
       ApiResponse.loading();
@@ -17,6 +19,9 @@ class DetailViewModel with ChangeNotifier {
       ApiResponse.loading();
 
     ApiResponse<Movies> similarMovieList =
+      ApiResponse.loading();
+
+ ApiResponse<Reviews> reviewMovie =
       ApiResponse.loading();
 
   setCastList(ApiResponse<Cast> response) {
@@ -33,6 +38,12 @@ class DetailViewModel with ChangeNotifier {
   setSimilarList(
       ApiResponse<Movies> response) {
     similarMovieList = response;
+    notifyListeners();
+  }
+
+  setReviewList(
+      ApiResponse<Reviews> response) {
+    reviewMovie = response;
     notifyListeners();
   }
   Future<void> fetchCastListApi(
@@ -55,14 +66,28 @@ class DetailViewModel with ChangeNotifier {
             setVideoList(ApiResponse.error(
                 error.toString())));
   }
-    Future<void> fetchSimilarMovieListApi(
+  
+  Future<void> fetchSimilarMovieListApi(
       int movieId) async {
-    await _videoRepo
+    await _similarMovieRepo
         .fetchSimilarMoviesVideo(movieId)
         .then((value) {
       setSimilarList(ApiResponse.completed(value));
     }).onError((error, stackTrace) =>
             setSimilarList(ApiResponse.error(
                 error.toString())));
+  }
+
+
+
+
+ Future<void> fetchReviews(
+      int movieId) async {
+    await _castRepo
+        .fetchReviewMovie(movieId)
+        .then((value) {
+      setReviewList(ApiResponse.completed(value));
+    }).onError((error, stackTrace) => setReviewList(
+            ApiResponse.error(error.toString())));
   }
 }

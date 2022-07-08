@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/response/status.dart';
 import 'package:flutter_application/models/movies.dart';
-import 'package:flutter_application/models/movies_video.dart';
-import 'package:flutter_application/res/color.dart';
-import 'package:flutter_application/view/movie_video_trailer.dart';
+import 'package:flutter_application/res/style/text_style.dart';
+import 'package:flutter_application/view/review_list_item.dart';
 import 'package:flutter_application/view_model/detail_view_model.dart';
 import 'package:provider/provider.dart';
 
-class MovieTrailerListView
-    extends StatefulWidget {
+import 'cast_item.dart';
+
+class ReviewListView extends StatefulWidget {
   Results movie;
-  MovieTrailerListView(
-      {Key? key, required this.movie})
+  ReviewListView({Key? key, required this.movie})
       : super(key: key);
 
   @override
-  State<MovieTrailerListView> createState() =>
-      _MovieTrailerListViewState();
+  State<ReviewListView> createState() =>
+      _ReviewListViewState();
 }
 
-class _MovieTrailerListViewState
-    extends State<MovieTrailerListView> {
+class _ReviewListViewState
+    extends State<ReviewListView> {
   DetailViewModel detailViewModel =
       DetailViewModel();
+
   @override
   void initState() {
     detailViewModel
-        .fetchVideoListApi(widget.movie.id!);
+        .fetchReviews(widget.movie.id!);
     super.initState();
   }
 
   @override
   void dispose() {
+    detailViewModel.dispose();
     super.dispose();
   }
 
@@ -39,41 +40,42 @@ class _MovieTrailerListViewState
   Widget build(BuildContext context) {
     final height =
         MediaQuery.of(context).size.height;
-
     return ChangeNotifierProvider<
             DetailViewModel>(
         create: (BuildContext context) =>
             detailViewModel,
         child: Consumer<DetailViewModel>(
             builder: (context, value, _) {
-          switch (value.videoList.status) {
+          switch (value.reviewMovie.status) {
+            case Status.LOADING:
+              return Center(
+                  child:
+                      const CircularProgressIndicator());
             case Status.ERROR:
               return Text(
-                  value.videoList.toString());
+                  value.reviewMovie.toString());
             case Status.COMPLETED:
               return Column(children: [
-                _upVideoList(value, height)
+                _upReviewMovieList(height, value)
               ]);
-
             default:
               return const Text("Hata");
           }
         }));
   }
 
-  Widget _upVideoList(
-      DetailViewModel value, double height) {
-    return  SizedBox(
-      height: height * 0.7,
+  Widget _upReviewMovieList(
+      double height, DetailViewModel value) {
+    return SizedBox(
+      height: height - 10,
       child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          itemCount: value.videoList.data!.results!.length,
+          itemCount: value
+              .reviewMovie.data!.results!.length,
           itemBuilder: (context, index) {
-            return MovieVideoTrailer(
-              video: value.videoList.data!.results![index],
-              movie: widget.movie,
-            );
+            return ReviewItem(
+                review: value.reviewMovie.data!
+                    .results![index]);
           }),
     );
   }

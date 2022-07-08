@@ -87,8 +87,9 @@ class _SimilarMovieListViewState
   Widget _upSimilarMovieList(
       double height, DetailViewModel value) {
     return SizedBox(
-      height: height,
+      height: height - 10,
       child: GridView.builder(
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           gridDelegate:
               const SliverGridDelegateWithMaxCrossAxisExtent(

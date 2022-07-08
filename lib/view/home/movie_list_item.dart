@@ -45,7 +45,7 @@ class ListItem extends StatelessWidget {
                   horizontal: 10, vertical: 20),
               child: Container(
                 height: height * .04,
-                width: width * .12,
+                width: width * .10,
                 decoration: BoxDecoration(
                   color: AppColors.redColor,
                   borderRadius:
@@ -53,7 +53,7 @@ class ListItem extends StatelessWidget {
                 ),
                 child: Center(
                     child: Text(
-                  "${movies.voteAverage}",
+                  "${movies.voteAverage!.roundToDouble()}",
                   style: TextStyle(
                     color: AppColors.whiteColor,
                   ),

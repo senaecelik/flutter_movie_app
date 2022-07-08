@@ -5,7 +5,8 @@ import 'package:flutter_application/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 class PopularListView extends StatefulWidget {
-  const PopularListView({Key? key}) : super(key: key);
+  const PopularListView({Key? key})
+      : super(key: key);
 
   @override
   State<PopularListView> createState() =>
@@ -69,6 +70,7 @@ class _PopularListViewState
       height: height * .47,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
           itemCount: value
               .moviesList.data!.results!.length,
           itemBuilder: (context, index) {

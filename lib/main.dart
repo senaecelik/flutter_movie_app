@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/utils/routes/routes.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
             create: (_) => HomeViewViewModel())
       ],
       child: MaterialApp(
+        scrollBehavior: CustomScrollBehavior(),
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         theme: ThemeData(
@@ -39,4 +41,13 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

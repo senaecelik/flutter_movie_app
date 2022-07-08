@@ -5,6 +5,7 @@ import 'package:flutter_application/data/network/NetworkApiServices.dart';
 import 'package:flutter_application/models/cast.dart';
 import 'package:flutter_application/models/movies.dart';
 import 'package:flutter_application/models/movies_video.dart';
+import 'package:flutter_application/models/review.dart';
 import 'package:flutter_application/res/app_url.dart';
 import 'package:http/http.dart' as http;
 
@@ -99,5 +100,23 @@ class HomeRepository {
           'Failed to retrieve Movie Detail');
     }
   }
+
+
+//https://api.themoviedb.org/3/movie/16/reviews?api_key=0277cc714ad9100fe38b7f37fdfeb1d9
+
+  Future<Reviews> fetchReviewMovie(
+      int movieId) async {
+    final response = await http.get(Uri.parse(
+        "${AppUrl.moviesBaseUrl}/$movieId/reviews?api_key=${AppUrl.apiKey}"));
+    print(response.body.toString());
+    if (response.statusCode == 200) {
+      return Reviews.fromJson(
+          json.decode(response.body));
+    } else {
+      throw Exception(
+          'Failed to retrieve Movie Detail');
+    }
+  }
+
 
 }
