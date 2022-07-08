@@ -1,0 +1,69 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_application/data/response/api_response.dart';
+import 'package:flutter_application/repository/home_repository.dart';
+
+import '../models/movies.dart';
+
+class HomeViewViewModel with ChangeNotifier {
+  final _popularMovieRepo = HomeRepository();
+  final _upComingMovieRepo = HomeRepository();
+  final _topRateMovieRepo = HomeRepository();
+
+  ApiResponse<Movies> moviesList =
+      ApiResponse.loading();
+
+  ApiResponse<Movies> upComingList =
+      ApiResponse.loading();
+  ApiResponse<Movies> topRatedList =
+      ApiResponse.loading();
+
+  setMoviesList(ApiResponse<Movies> response) {
+    moviesList = response;
+    notifyListeners();
+  }
+
+  setUpComingMoviesList(
+      ApiResponse<Movies> response) {
+    upComingList = response;
+    notifyListeners();
+  }
+
+  setUpTopRateMoviesList(
+      ApiResponse<Movies> response) {
+    topRatedList = response;
+    notifyListeners();
+  }
+
+  Future<void> fetchMoviesListApi() async {
+    await _popularMovieRepo.getMovie().then(
+        (value) {
+      setMoviesList(ApiResponse.completed(value));
+    }).onError((error, stackTrace) =>
+        setMoviesList(
+            ApiResponse.error(error.toString())));
+  }
+
+  Future<void> fetchUpComingListApi() async {
+    await _upComingMovieRepo
+        .getUpComingMovie()
+        .then((value) {
+      setUpComingMoviesList(
+          ApiResponse.completed(value));
+    }).onError((error, stackTrace) =>
+            setUpComingMoviesList(
+                ApiResponse.error(
+                    error.toString())));
+  }
+
+  Future<void> fetchTopRateListApi() async {
+    await _topRateMovieRepo
+        .getTopRatedMovie()
+        .then((value) {
+      setUpTopRateMoviesList(
+          ApiResponse.completed(value));
+    }).onError((error, stackTrace) =>
+            setUpTopRateMoviesList(
+                ApiResponse.error(
+                    error.toString())));
+  }
+}
