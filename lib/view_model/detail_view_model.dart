@@ -4,13 +4,13 @@ import 'package:flutter_application/models/cast.dart';
 import 'package:flutter_application/models/movies.dart';
 import 'package:flutter_application/models/movies_video.dart';
 import 'package:flutter_application/models/review.dart';
-import 'package:flutter_application/repository/home_repository.dart';
+import 'package:flutter_application/repository/detail_repository.dart';
 
 class DetailViewModel with ChangeNotifier {
-  final _castRepo = HomeRepository();
-  final _videoRepo = HomeRepository();
-  final _similarMovieRepo = HomeRepository();
-  final _reviewMovieRepo = HomeRepository();
+  final _castRepo = DetailRepository();
+  final _videoRepo = DetailRepository();
+  final _similarMovieRepo = DetailRepository();
+  final _reviewMovieRepo = DetailRepository();
 
   ApiResponse<Cast> castList =
       ApiResponse.loading();
@@ -83,7 +83,7 @@ class DetailViewModel with ChangeNotifier {
 
  Future<void> fetchReviews(
       int movieId) async {
-    await _castRepo
+    await _reviewMovieRepo
         .fetchReviewMovie(movieId)
         .then((value) {
       setReviewList(ApiResponse.completed(value));
