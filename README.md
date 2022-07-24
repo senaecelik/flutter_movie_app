@@ -5,7 +5,9 @@
 
 <p align="center">
 <img src="https://github.com/senaecelik/flutter_movie_app/blob/main/app_images/mova.png" width="750">&nbsp;&nbsp;
-
+## Features
+ - Made with HTTP library,MVVM architecture, ongenerated routes, provider...
+ 
 ## Pages
 - [Splash Page and Onboard Page](#splash-page-and-onboard-page)
 - [Home Page](#home-page)
