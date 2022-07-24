@@ -1,5 +1,7 @@
+import 'package:flutter_application/models/person.dart';
+
 class Cast {
-   List<Casts>? results;
+  List<Casts>? results;
 
   Cast.fromJson(Map<String, dynamic> json) {
     if (json['cast'] != null) {
@@ -9,6 +11,7 @@ class Cast {
       });
     }
   }
+
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
@@ -23,29 +26,17 @@ class Cast {
   }
 }
 
-class Casts {
-  bool? adult;
-  int? gender;
-  int? id;
-  String? knownForDepartment;
-  String? name;
+class Casts extends Person {
+
   String? originalName;
-  double? popularity;
-  String? profilePath;
   int? castId;
   String? character;
   String? creditId;
   int? order;
 
   Casts(
-      {this.adult,
-      this.gender,
-      this.id,
-      this.knownForDepartment,
-      this.name,
+      {
       this.originalName,
-      this.popularity,
-      this.profilePath,
       this.castId,
       this.character,
       this.creditId,
@@ -55,9 +46,9 @@ class Casts {
     adult = json['adult'];
     gender = json['gender'];
     id = json['id'];
-    knownForDepartment = json['known_for_department'];
+    knownForDepartment =
+        json['known_for_department'];
     name = json['name'];
-    originalName = json['original_name'];
     popularity = json['popularity'];
     profilePath = json['profile_path'];
     castId = json['cast_id'];
@@ -66,14 +57,16 @@ class Casts {
     order = json['order'];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =
+        new Map<String, dynamic>();
     data['adult'] = adult;
     data['gender'] = gender;
     data['id'] = id;
-    data['known_for_department'] = knownForDepartment;
+    data['known_for_department'] =
+        knownForDepartment;
     data['name'] = name;
-    data['original_name'] = originalName;
     data['popularity'] = popularity;
     data['profile_path'] = profilePath;
     data['cast_id'] = castId;
@@ -114,7 +107,8 @@ class Crew {
     adult = json['adult'];
     gender = json['gender'];
     id = json['id'];
-    knownForDepartment = json['known_for_department'];
+    knownForDepartment =
+        json['known_for_department'];
     name = json['name'];
     originalName = json['original_name'];
     popularity = json['popularity'];
@@ -125,11 +119,13 @@ class Crew {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =
+        new Map<String, dynamic>();
     data['adult'] = adult;
     data['gender'] = gender;
     data['id'] = id;
-    data['known_for_department'] = knownForDepartment;
+    data['known_for_department'] =
+        knownForDepartment;
     data['name'] = name;
     data['original_name'] = originalName;
     data['popularity'] = popularity;
