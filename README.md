@@ -1,6 +1,10 @@
 # Flutter - TMDB Api Movie App
-- This app is designed using Flutter and Tmdi.
+- This app is designed using Flutter and [The Movie Database Api](#https://developers.themoviedb.org/3/getting-started/introduction).
 - The ui given by Figma as ready is referenced.
+
+
+<p align="center">
+<img src="https://github.com/senaecelik/flutter_movie_app/blob/main/app_images/mova.png" width="750">&nbsp;&nbsp;
 
 ## Pages
 - [Splash Page and Onboard Page](#splash-page-and-onboard-page)
