@@ -1,5 +1,5 @@
 # Flutter - TMDB Api Movie App
-- This app is designed using Flutter and [The Movie Database Api](https://developers.themoviedb.org/3/getting-started/introduction)
+- This app is made with using Flutter and [The Movie Database Api](https://developers.themoviedb.org/3/getting-started/introduction)
 - The ui given by Figma as ready is referenced. [Mova Ui Design](https://www.figma.com/community/file/1118199928489352414)
 
 
@@ -23,9 +23,12 @@
 
 ### Home Page
 
-- Popular movies listed. [Popular Movie Api](https://developers.themoviedb.org/3/movies/get-popular-movies)
-- Top rated movies listed.[Top Rated Movie Api](https://developers.themoviedb.org/3/movies/get-top-rated-movies)
-- Upcoming movies listed. [Upcoming Movie Api](https://developers.themoviedb.org/3/movies/get-upcoming)
+- Popular movies listed. 
+  - [Popular Movie Api](https://developers.themoviedb.org/3/movies/get-popular-movies)
+- Top rated movies listed.
+  - [Top Rated Movie Api](https://developers.themoviedb.org/3/movies/get-top-rated-movies)
+- Upcoming movies listed.
+  - [Upcoming Movie Api](https://developers.themoviedb.org/3/movies/get-upcoming)
 
 
 <p align="center">
@@ -50,9 +53,12 @@
 
 ### Cast Detail Page
 
-- The properties of the selected actor/actriss are shown
+- The properties of the selected actor/actriss are shown.
+  - [Cast Detail Api](https://developers.themoviedb.org/3/people/get-person-details)
 - Other movies of the selected person are shown by listing them
-- The selected person’s pictures are listed, and picture can be zoomed in and out
+  - [Movie Credit Api)[https://developers.themoviedb.org/3/people/get-person-movie-credits]
+- The selected person’s pictures are listed, and picture can be zoomed in and out7
+  - [Persons Image Api](https://developers.themoviedb.org/3/people/get-person-images)
 
 
 
