@@ -4,7 +4,8 @@
 
 
 <p align="center">
-<img src="https://github.com/senaecelik/flutter_movie_app/blob/main/app_images/mova.png" width="750">&nbsp;&nbsp;
+<img src="https://github.com/senaecelik/flutter_movie_app/blob/main/app_images/mova.png" width="750">
+
 ## Features
  - Made with HTTP library,MVVM architecture, ongenerated routes, provider...
  
