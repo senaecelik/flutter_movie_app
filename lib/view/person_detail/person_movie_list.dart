@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/res/app_url.dart';
-import 'package:flutter_application/res/componenets/avaible_poster_path.dart';
+import 'package:flutter_application/data/response/status.dart';
 import 'package:flutter_application/res/style/text_style.dart';
-import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
+import 'package:flutter_application/view/home/up_coming_list/movie_list_item.dart';
+import 'package:flutter_application/view_model/person_detail_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../data/response/status.dart';
-import '../models/cast.dart';
-import '../res/color.dart';
-import '../view_model/person_detail_view_model.dart';
+import '../../models/cast.dart';
+import '../../res/color.dart';
 
-class PersonImageList extends StatefulWidget {
+class PersonMovieList extends StatefulWidget {
   Casts person;
-  PersonImageList(
+  PersonMovieList(
       {Key? key, required this.person})
       : super(key: key);
 
   @override
-  State<PersonImageList> createState() =>
-      _PersonImageListState();
+  State<PersonMovieList> createState() =>
+      _PersonMovieListState();
 }
 
-class _PersonImageListState
-    extends State<PersonImageList> {
+class _PersonMovieListState
+    extends State<PersonMovieList> {
   PersonDetailViewModel personDetailViewModel =
       PersonDetailViewModel();
 
   @override
   void initState() {
     personDetailViewModel
-        .fetchPersonImage(widget.person.id!);
+        .fetchPersonMovies(widget.person.id!);
     super.initState();
   }
 
@@ -53,7 +50,7 @@ class _PersonImageListState
       crossAxisAlignment:
           CrossAxisAlignment.start,
       children: [
-        Text("Images",
+        Text("Movies",
             style: AppStyle.instance.bodyXLarge
                 .copyWith(
                     color: AppColors.redColor)),
@@ -68,7 +65,7 @@ class _PersonImageListState
                 Consumer<PersonDetailViewModel>(
                     builder: (context, value, _) {
               switch (
-                  value.personImageList.status) {
+                  value.personMoviesList.status) {
                 case Status.LOADING:
                   return Container(
                     height: height,
@@ -78,7 +75,7 @@ class _PersonImageListState
                   );
                 case Status.ERROR:
                   return Text(value
-                      .personImageList
+                      .personMoviesList
                       .toString());
                 case Status.COMPLETED:
                   return Column(children: [
@@ -93,40 +90,19 @@ class _PersonImageListState
     );
   }
 
-  Widget _upComingMovieList(double height,
+  SizedBox _upComingMovieList(double height,
       PersonDetailViewModel value) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      height: height * 0.38,
-      width: double.infinity,
-      child: PhotoViewGallery.builder(
-        itemCount: value.personImageList.data!
-            .profiles!.length,
-        builder: (context, index) {
-          return PhotoViewGalleryPageOptions
-              .customChild(
-            minScale:
-                PhotoViewComputedScale.contained *
-                    1,
-            maxScale:
-                PhotoViewComputedScale.contained *
-                    2,
-            child: AvaiblePosterPath(
-              height: 700,
-              width: 500,
-              imageUrl: value
-                  .personImageList
-                  .data!
-                  .profiles![index]
-                  .filePath!,
-            ),
-          );
-        },
-        scrollPhysics: BouncingScrollPhysics(),
-        backgroundDecoration: BoxDecoration(
-          color: AppColors.blackColor,
-        ),
-      ),
+    return SizedBox(
+      height: height * .4,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: value.personMoviesList.data!
+              .personMovie!.length,
+          itemBuilder: (context, index) {
+            return ListItem(
+                movies: value.personMoviesList
+                    .data!.personMovie![index]);
+          }),
     );
   }
 }

@@ -4,12 +4,12 @@ import 'package:flutter_application/res/app_url.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/red_border_widget.dart';
 import 'package:flutter_application/res/style/text_style.dart';
-import 'package:flutter_application/view/person_image_list.dart';
-import 'package:flutter_application/view/person_movie_list.dart';
+import 'package:flutter_application/view/cast_detail/person_image_list.dart';
+import 'package:flutter_application/view/cast_detail/person_movie_list.dart';
 import 'package:flutter_application/view/home/up_coming_list/movie_list_item.dart';
 import 'package:flutter_application/view_model/person_detail_view_model.dart';
 import 'package:provider/provider.dart';
-import '../data/response/status.dart';
+import '../../data/response/status.dart';
 
 class PersonDetailScreen extends StatefulWidget {
   Casts person;

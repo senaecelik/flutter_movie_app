@@ -4,7 +4,7 @@ import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/avaible_circle_photo.dart';
 import 'package:flutter_application/res/componenets/not_avaible_photo.dart';
 import 'package:flutter_application/res/style/text_style.dart';
-import 'package:flutter_application/view/person_detail_screen.dart';
+import 'package:flutter_application/view/person_detail/person_detail_screen.dart';
 
 class CastItem extends StatelessWidget {
   final Casts cast;

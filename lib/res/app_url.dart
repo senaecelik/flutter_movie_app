@@ -1,18 +1,12 @@
-// ignore_for_file: unnecessary_brace_in_string_interps, prefer_typing_uninitialized_variables
+
 
 class AppUrl {
   //https://api.themoviedb.org/3/movie/popular?api_key=0277cc714ad9100fe38b7f37fdfeb1d9
   //https://api.themoviedb.org/3/movie/550?api_key=0277cc714ad9100fe38b7f37fdfeb1d9
   //https://api.themoviedb.org/3/person/
 
-  static var baseUrl = 'https://reqres.in/';
   static var photoBaseUrl =
       "https://image.tmdb.org/t/p/w500";
-
-  static var loginEndPint = '${baseUrl}api/login';
-
-  static var registerApiEndPoint =
-      '${baseUrl}api/register';
 
   static var moviesBaseUrl =
       'https://api.themoviedb.org/3/movie';

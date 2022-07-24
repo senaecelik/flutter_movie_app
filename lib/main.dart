@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/utils/routes/routes.dart';
 import 'package:flutter_application/utils/routes/routes_name.dart';
-import 'package:flutter_application/view_model/auth_view_model.dart';
 import 'package:flutter_application/view_model/detail_view_model.dart';
 import 'package:flutter_application/view_model/home_view_model.dart';
 import 'package:flutter_application/view_model/person_detail_view_model.dart';
@@ -30,9 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => AuthViewModel(),
-        ),
+       
         ChangeNotifierProvider(
             create: (_) => HomeViewViewModel()),
         ChangeNotifierProvider(
