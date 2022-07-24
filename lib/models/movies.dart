@@ -1,5 +1,6 @@
 class Movies {
   List<Results>? results;
+  List<Results>? personMovie;
 
   Movies.fromJson(Map<String, dynamic> json) {
     if (json['results'] != null) {
@@ -10,12 +11,33 @@ class Movies {
     }
   }
 
+ Movies.fromPersonMovieJson(Map<String, dynamic> json) {
+    if (json['cast'] != null) {
+      personMovie = <Results>[];
+      json['cast'].forEach((v) {
+        personMovie!.add(Results.fromJson(v));
+      });
+    }
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
         <String, dynamic>{};
 
     if (results != null) {
       data['results'] = results!
+          .map((v) => v.toJson())
+          .toList();
+    }
+    return data;
+  }
+
+   Map<String, dynamic> toPersonMovieJson() {
+    final Map<String, dynamic> data =
+        <String, dynamic>{};
+
+    if (results != null) {
+      data['cast'] = personMovie!
           .map((v) => v.toJson())
           .toList();
     }
