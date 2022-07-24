@@ -1,24 +1,30 @@
+import 'package:flutter/cupertino.dart';
+
 class Reviews {
   List<Review>? results;
 
   Reviews.fromJson(Map<String, dynamic> json) {
-   
     if (json['results'] != null) {
       results = <Review>[];
       json['results'].forEach((v) {
         results!.add(Review.fromJson(v));
       });
+    } else {
+      Text("Henüz yorum yok");
     }
-   
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =<String, dynamic>{};
-  
+    final Map<String, dynamic> data =
+        <String, dynamic>{};
+
     if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+      data['results'] = this
+          .results!
+          .map((v) => v.toJson())
+          .toList();
     }
-  
+
     return data;
   }
 }
@@ -44,7 +50,8 @@ class Review {
   Review.fromJson(Map<String, dynamic> json) {
     author = json['author'];
     authorDetails = json['author_details'] != null
-        ? new AuthorDetails.fromJson(json['author_details'])
+        ? new AuthorDetails.fromJson(
+            json['author_details'])
         : null;
     content = json['content'];
     createdAt = json['created_at'];
@@ -54,10 +61,12 @@ class Review {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =
+        <String, dynamic>{};
     data['author'] = this.author;
     if (this.authorDetails != null) {
-      data['author_details'] = this.authorDetails!.toJson();
+      data['author_details'] =
+          this.authorDetails!.toJson();
     }
     data['content'] = this.content;
     data['created_at'] = this.createdAt;
@@ -74,9 +83,14 @@ class AuthorDetails {
   String? avatarPath;
   double? rating;
 
-  AuthorDetails({this.name, this.username, this.avatarPath, this.rating});
+  AuthorDetails(
+      {this.name,
+      this.username,
+      this.avatarPath,
+      this.rating});
 
-  AuthorDetails.fromJson(Map<String, dynamic> json) {
+  AuthorDetails.fromJson(
+      Map<String, dynamic> json) {
     name = json['name'];
     username = json['username'];
     avatarPath = json['avatar_path'];
@@ -84,7 +98,8 @@ class AuthorDetails {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =
+        <String, dynamic>{};
     data['name'] = this.name;
     data['username'] = this.username;
     data['avatar_path'] = this.avatarPath;
