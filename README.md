@@ -56,7 +56,7 @@
 - The properties of the selected actor/actriss are shown.
   - [Cast Detail Api](https://developers.themoviedb.org/3/people/get-person-details)
 - Other movies of the selected person are shown by listing them
-  - [Movie Credit Api)[https://developers.themoviedb.org/3/people/get-person-movie-credits]
+  - [Movie Credit Api](https://developers.themoviedb.org/3/people/get-person-movie-credits)
 - The selected person’s pictures are listed, and picture can be zoomed in and out7
   - [Persons Image Api](https://developers.themoviedb.org/3/people/get-person-images)
 
