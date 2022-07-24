@@ -12,6 +12,7 @@ class NetworkApiServices extends BaseApiServices {
       final response =
           await http.get(Uri.parse(url));
       responseJson = returnResponse(response);
+      print(response.body.toString());
     } on SocketException {
       throw FetchDataException(
           'No Internet Connection');
