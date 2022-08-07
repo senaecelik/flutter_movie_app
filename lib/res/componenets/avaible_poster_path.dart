@@ -1,4 +1,6 @@
 
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/res/app_url.dart';
@@ -35,7 +37,7 @@ class AvaiblePosterPath extends StatelessWidget {
         ),
       ),
       imageUrl:
-          "${AppUrl.photoBaseUrl}${imageUrl}",
+          "${AppUrl.photoBaseUrl}$imageUrl",
     );
   }
 }
