@@ -4,7 +4,6 @@ import 'package:flutter_application/models/movies_video.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/red_border_widget.dart';
 import 'package:flutter_application/res/style/text_style.dart';
-import 'package:flutter_application/view/detail/detail_screen.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class MovieVideoTrailer extends StatefulWidget {
@@ -30,7 +29,7 @@ class _MovieVideoTrailerState
     setState(() {
       _controller = YoutubePlayerController(
         initialVideoId: widget.video.key!,
-        params: YoutubePlayerParams(
+        params: const YoutubePlayerParams(
           startAt: Duration(seconds: 30),
           showControls: true,
           showFullscreenButton: true,
@@ -43,7 +42,7 @@ class _MovieVideoTrailerState
         MediaQuery.of(context).size.width;
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           Row(
@@ -51,8 +50,8 @@ class _MovieVideoTrailerState
                 MainAxisAlignment.start,
             children: [
               widget.video.key == null
-                  ? Text("Video bulunamadı.")
-                  : Container(
+                  ? const Text("Video bulunamadı.")
+                  : SizedBox(
                       height: height * .20,
                       width: width * .50,
                       child:
@@ -60,7 +59,7 @@ class _MovieVideoTrailerState
                         // Provides controller to all the widget below it.
                         controller: _controller,
                         child:
-                            YoutubePlayerIFrame(
+                            const YoutubePlayerIFrame(
                           aspectRatio: 16 / 9,
                         ),
                       ),
