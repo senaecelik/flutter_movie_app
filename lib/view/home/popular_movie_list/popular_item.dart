@@ -64,7 +64,7 @@ class PopularItem extends StatelessWidget {
                 CrossAxisAlignment.start,
             children: [
               movies.title == null
-                  ? Text("N/A")
+                  ? const Text("N/A")
                   : _movieTitle(),
               SizedBox(
                 height: height * .02,
