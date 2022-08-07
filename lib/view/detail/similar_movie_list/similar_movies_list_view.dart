@@ -3,7 +3,6 @@ import 'package:flutter_application/data/response/status.dart';
 import 'package:flutter_application/res/style/text_style.dart';
 import 'package:flutter_application/view/home/up_coming_list/movie_list_item.dart';
 import 'package:flutter_application/view_model/detail_view_model.dart';
-import 'package:flutter_application/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../res/color.dart';
@@ -11,8 +10,8 @@ import '../../../models/movies.dart';
 
 class SimilarMovieListView
     extends StatefulWidget {
-  Results movie;
-  SimilarMovieListView(
+  final Results movie;
+  const SimilarMovieListView(
       {Key? key, required this.movie})
       : super(key: key);
 
@@ -62,7 +61,7 @@ class _SimilarMovieListViewState
                   switch (value
                       .similarMovieList.status) {
                     case Status.LOADING:
-                      return Center(
+                      return const Center(
                           child:
                               CircularProgressIndicator());
                     case Status.ERROR:
@@ -75,7 +74,7 @@ class _SimilarMovieListViewState
                             height, value)
                       ]);
                     default:
-                      return Text("Hata");
+                      return const Text("Hata");
                   }
                 })),
           ],
