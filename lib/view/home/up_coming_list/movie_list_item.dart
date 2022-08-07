@@ -53,7 +53,7 @@ class ListItem extends StatelessWidget {
                 child: Center(
                     child: Text(
                   "${movies.voteAverage!.roundToDouble()}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.whiteColor,
                   ),
                 )),
