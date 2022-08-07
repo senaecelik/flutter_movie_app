@@ -7,11 +7,10 @@ import 'package:flutter_application/view/detail/review_list/review_list_item.dar
 import 'package:flutter_application/view_model/detail_view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../cast_list/cast_item.dart';
 
 class ReviewListView extends StatefulWidget {
-  Results movie;
-  ReviewListView({Key? key, required this.movie})
+  final Results movie;
+  const ReviewListView({Key? key, required this.movie})
       : super(key: key);
 
   @override
@@ -49,9 +48,9 @@ class _ReviewListViewState
             builder: (context, value, _) {
           switch (value.reviewMovie.status) {
             case Status.LOADING:
-              return Center(
+              return const Center(
                   child:
-                      const CircularProgressIndicator());
+                      CircularProgressIndicator());
             case Status.ERROR:
               return Text(
                   value.reviewMovie.toString());
