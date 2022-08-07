@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application/res/color.dart';
 
@@ -16,10 +18,10 @@ class NotAvaiblePhoto extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: AppColors.redColor),
-      child: Center(child: Text("N/A")),
+      child: const Center(child: const Text("N/A")),
     );
   }
 }
