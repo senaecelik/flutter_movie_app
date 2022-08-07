@@ -9,8 +9,8 @@ import '../../models/cast.dart';
 import '../../res/color.dart';
 
 class PersonMovieList extends StatefulWidget {
-  Casts person;
-  PersonMovieList(
+  final Casts person;
+  const PersonMovieList(
       {Key? key, required this.person})
       : super(key: key);
 
@@ -42,8 +42,6 @@ class _PersonMovieListState
     final height =
         MediaQuery.of(context).size.height;
 
-    final width =
-        MediaQuery.of(context).size.width;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -67,7 +65,7 @@ class _PersonMovieListState
               switch (
                   value.personMoviesList.status) {
                 case Status.LOADING:
-                  return Container(
+                  return SizedBox(
                     height: height,
                     child: const Center(
                         child:
