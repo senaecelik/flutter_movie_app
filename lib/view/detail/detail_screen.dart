@@ -6,6 +6,7 @@ import 'package:flutter_application/res/app_url.dart';
 import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/res/componenets/red_border_widget.dart';
 import 'package:flutter_application/res/componenets/red_button.dart';
+import 'package:flutter_application/res/constant/string_constant.dart';
 import 'package:flutter_application/res/style/text_style.dart';
 import 'package:flutter_application/view/detail/cast_list/cast_list_view.dart';
 import 'package:flutter_application/view/detail/video_list/movie_video_list_view.dart';
@@ -32,63 +33,67 @@ class _DetailPageState extends State<DetailPage> {
         MediaQuery.of(context).size.width;
 
     return Scaffold(
+        appBar: AppBar(
+            title: widget.movies.title != null
+                ? Text("${widget.movies.title}")
+                : Text(AppString
+                    .instance.textAppName)),
         body: SingleChildScrollView(
-      child: Column(
-        children: [
-          _moviePoster(height),
-          SizedBox(
-            height: height * .03,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 20),
-            child: Column(
-              mainAxisAlignment:
-                  MainAxisAlignment.start,
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
-              children: [
-                _moviesTitleRow(width),
-                SizedBox(
-                  height: height * .02,
-                ),
-                _moviesDetailRow(width),
-                SizedBox(
-                  height: height * .02,
-                ),
-                _moviesOverviewRow(),
-                CastListView(
-                    movie: widget.movies),
-                _tabBar(height),
-              ],
-            ),
-          )
-        ],
-      ),
-    ));
-  }
-
-  Stack _moviePoster(double height) {
-    return Stack(
-            alignment: Alignment.bottomLeft,
+          child: Column(
             children: [
-              Container(
-                height: height * .35,
-                width: double.infinity,
-                child: Image.network(
-                  "${AppUrl.photoBaseUrl}${widget.movies.posterPath}",
-                  fit: BoxFit.cover,
-                ),
+              _moviePoster(height),
+              SizedBox(
+                height: height * .03,
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                        vertical: 20),
-                child: RedButton(
-                    width: 500, height: 750),
-              ),
-            ]);
+                        horizontal: 20),
+                child: Column(
+                  mainAxisAlignment:
+                      MainAxisAlignment.start,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  children: [
+                    _moviesTitleRow(width),
+                    SizedBox(
+                      height: height * .02,
+                    ),
+                    _moviesDetailRow(width),
+                    SizedBox(
+                      height: height * .02,
+                    ),
+                    _moviesOverviewRow(),
+                    CastListView(
+                        movie: widget.movies),
+                    _tabBar(height),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+
+  Stack _moviePoster(double height) {
+    return Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          SizedBox(
+            height: height * .35,
+            width: double.infinity,
+            child: Image.network(
+              "${AppUrl.photoBaseUrl}${widget.movies.posterPath}",
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: 20.0, vertical: 20),
+            child: RedButton(
+                width: 500, height: 750),
+          ),
+        ]);
   }
 
   DefaultTabController _tabBar(double height) {
@@ -103,7 +108,7 @@ class _DetailPageState extends State<DetailPage> {
             unselectedLabelColor: AppColors
                 .whiteColor
                 .withOpacity(0.4),
-            tabs: [
+            tabs: const [
               Tab(text: 'Videos'),
               Tab(text: 'Similar Movies'),
               Tab(text: 'Comment'),
