@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/res/app_url.dart';
 import 'package:flutter_application/res/componenets/avaible_poster_path.dart';
 import 'package:flutter_application/res/style/text_style.dart';
 import 'package:photo_view/photo_view.dart';
@@ -12,8 +11,8 @@ import '../../res/color.dart';
 import '../../view_model/person_detail_view_model.dart';
 
 class PersonImageList extends StatefulWidget {
-  Casts person;
-  PersonImageList(
+  final Casts person;
+  const PersonImageList(
       {Key? key, required this.person})
       : super(key: key);
 
@@ -45,9 +44,6 @@ class _PersonImageListState
     final height =
         MediaQuery.of(context).size.height;
 
-    final width =
-        MediaQuery.of(context).size.width;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment:
@@ -70,7 +66,7 @@ class _PersonImageListState
               switch (
                   value.personImageList.status) {
                 case Status.LOADING:
-                  return Container(
+                  return SizedBox(
                     height: height,
                     child: const Center(
                         child:
@@ -96,7 +92,7 @@ class _PersonImageListState
   Widget _upComingMovieList(double height,
       PersonDetailViewModel value) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(bottom: 20),
       height: height * 0.38,
       width: double.infinity,
       child: PhotoViewGallery.builder(
@@ -122,8 +118,8 @@ class _PersonImageListState
             ),
           );
         },
-        scrollPhysics: BouncingScrollPhysics(),
-        backgroundDecoration: BoxDecoration(
+        scrollPhysics: const BouncingScrollPhysics(),
+        backgroundDecoration: const BoxDecoration(
           color: AppColors.blackColor,
         ),
       ),
