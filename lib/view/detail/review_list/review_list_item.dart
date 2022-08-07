@@ -9,7 +9,7 @@ import 'package:flutter_application/res/style/text_style.dart';
 
 class ReviewItem extends StatelessWidget {
   final Review review;
-  ReviewItem({Key? key, required this.review})
+  const ReviewItem({Key? key, required this.review})
       : super(key: key);
 
   @override
@@ -41,20 +41,18 @@ class ReviewItem extends StatelessWidget {
               width: width * .02,
             ),
             review.authorDetails!.name == null
-                ? Text("N/A")
+                ? const Text("N/A")
                 : Column(
                     mainAxisAlignment:
                         MainAxisAlignment.start,
                     crossAxisAlignment:
                         CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        child: Text(
-                          review.authorDetails!
-                              .username!,
-                          style: AppStyle.instance
-                              .bodyXLarge,
-                        ),
+                      Text(
+                        review.authorDetails!
+                            .username!,
+                        style: AppStyle.instance
+                            .bodyXLarge,
                       ),
                     ],
                   )
@@ -63,15 +61,14 @@ class ReviewItem extends StatelessWidget {
         SizedBox(
           height: height * .02,
         ),
-        Container(
-            child: Text(
+        Text(
           review.content.toString(),
           style: AppStyle.instance.bodyMedium
-              .copyWith(
-            color: AppColors.whiteColor
-                .withOpacity(0.4),
+          .copyWith(
+        color: AppColors.whiteColor
+            .withOpacity(0.4),
           ),
-        )),
+        ),
         Divider(
           color: AppColors.whiteColor
               .withOpacity(0.4),
@@ -101,7 +98,7 @@ class AvaibleReviewPhoto extends StatelessWidget {
             imageBuilder:
                 (context, imageProvider) =>
                     Container(
-              margin: EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(right: 10),
               height: 50,
               width: 50,
               decoration: BoxDecoration(
