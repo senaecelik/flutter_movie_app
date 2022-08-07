@@ -37,7 +37,7 @@ class CastItem extends StatelessWidget {
               CrossAxisAlignment.center,
           children: [
             cast.profilePath == null
-                ? NotAvaiblePhoto(
+                ? const NotAvaiblePhoto(
                     height: 100,
                     width: 100,
                   )
@@ -45,7 +45,7 @@ class CastItem extends StatelessWidget {
                     imageUrl: cast.profilePath!,
                   ),
             cast.name == null
-                ? Text("N/A")
+                ? const Text("N/A")
                 : Column(
                     mainAxisAlignment:
                         MainAxisAlignment.center,
