@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../res/color.dart';
 
 class UpComingListView extends StatefulWidget {
-  UpComingListView({Key? key}) : super(key: key);
+  const UpComingListView({Key? key}) : super(key: key);
 
   @override
   State<UpComingListView> createState() =>
@@ -54,18 +54,18 @@ class _UpComingListViewState
                 switch (
                     value.upComingList.status) {
                   case Status.LOADING:
-                    return  Container(
+                    return  SizedBox(
                         height: height,
-                        child: Center(
+                        child: const Center(
                             child:
-                                CircularProgressIndicator()),
+                                 CircularProgressIndicator()),
                       );
                   case Status.ERROR:
                     return Text(value.upComingList
                         .toString());
                   case Status.COMPLETED:
                     return Column(children: [
-                      HomeListTittleWidget(
+                      const HomeListTittleWidget(
                           text:
                               "Upcoming Film List"),
                       SizedBox(
@@ -75,7 +75,7 @@ class _UpComingListViewState
                           height, value)
                     ]);
                   default:
-                    return Text("Hata");
+                    return const Text("Hata");
                 }
               })),
         ],
