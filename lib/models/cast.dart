@@ -1,5 +1,4 @@
 import 'package:flutter_application/models/person.dart';
-import 'package:json_annotation/json_annotation.dart';
 class Cast {
   List<Casts>? results;
 
@@ -57,7 +56,7 @@ class Casts extends Person {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
-        new Map<String, dynamic>();
+        <String, dynamic>{};
     data['adult'] = adult;
     data['gender'] = gender;
     data['id'] = id;
@@ -117,7 +116,7 @@ class Crew {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
-        new Map<String, dynamic>();
+        <String, dynamic>{};
     data['adult'] = adult;
     data['gender'] = gender;
     data['id'] = id;
