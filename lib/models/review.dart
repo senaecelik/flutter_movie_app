@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 
 class Reviews {
   List<Review>? results;
@@ -9,18 +9,15 @@ class Reviews {
       json['results'].forEach((v) {
         results!.add(Review.fromJson(v));
       });
-    } else {
-      Text("Henüz yorum yok");
-    }
+    } 
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
         <String, dynamic>{};
 
-    if (this.results != null) {
-      data['results'] = this
-          .results!
+    if (results != null) {
+      data['results'] = results!
           .map((v) => v.toJson())
           .toList();
     }
@@ -50,7 +47,7 @@ class Review {
   Review.fromJson(Map<String, dynamic> json) {
     author = json['author'];
     authorDetails = json['author_details'] != null
-        ? new AuthorDetails.fromJson(
+        ? AuthorDetails.fromJson(
             json['author_details'])
         : null;
     content = json['content'];
@@ -63,16 +60,16 @@ class Review {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
         <String, dynamic>{};
-    data['author'] = this.author;
-    if (this.authorDetails != null) {
+    data['author'] = author;
+    if (authorDetails != null) {
       data['author_details'] =
-          this.authorDetails!.toJson();
+          authorDetails!.toJson();
     }
-    data['content'] = this.content;
-    data['created_at'] = this.createdAt;
-    data['id'] = this.id;
-    data['updated_at'] = this.updatedAt;
-    data['url'] = this.url;
+    data['content'] = content;
+    data['created_at'] = createdAt;
+    data['id'] = id;
+    data['updated_at'] = updatedAt;
+    data['url'] = url;
     return data;
   }
 }
@@ -100,10 +97,10 @@ class AuthorDetails {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =
         <String, dynamic>{};
-    data['name'] = this.name;
-    data['username'] = this.username;
-    data['avatar_path'] = this.avatarPath;
-    data['rating'] = this.rating;
+    data['name'] = name;
+    data['username'] = username;
+    data['avatar_path'] = avatarPath;
+    data['rating'] = rating;
     return data;
   }
 }
