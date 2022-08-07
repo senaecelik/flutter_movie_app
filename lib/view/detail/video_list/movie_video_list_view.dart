@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/response/status.dart';
 import 'package:flutter_application/models/movies.dart';
-import 'package:flutter_application/models/movies_video.dart';
-import 'package:flutter_application/res/color.dart';
 import 'package:flutter_application/view/detail/video_list/movie_video_trailer.dart';
 import 'package:flutter_application/view_model/detail_view_model.dart';
 import 'package:provider/provider.dart';
 
 class MovieTrailerListView
     extends StatefulWidget {
-  Results movie;
-  MovieTrailerListView(
+  final Results movie;
+  const MovieTrailerListView(
       {Key? key, required this.movie})
       : super(key: key);
 
@@ -48,7 +46,7 @@ class _MovieTrailerListViewState
             builder: (context, value, _) {
           switch (value.videoList.status) {
             case Status.LOADING:
-              return Center(
+              return const Center(
                   child:
                       CircularProgressIndicator());
             case Status.ERROR:
