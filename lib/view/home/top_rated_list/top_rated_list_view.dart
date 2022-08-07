@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../res/color.dart';
 
 class TopRatedListView extends StatefulWidget {
-  TopRatedListView({Key? key}) : super(key: key);
+  const TopRatedListView({Key? key}) : super(key: key);
 
   @override
   State<TopRatedListView> createState() =>
@@ -57,9 +57,9 @@ class _TopRatedListViewState
                   switch (
                       value.topRatedList.status) {
                     case Status.LOADING:
-                      return Container(
+                      return SizedBox(
                         height: height,
-                        child: Center(
+                        child: const Center(
                             child:
                                 CircularProgressIndicator()),
                       );
@@ -69,7 +69,7 @@ class _TopRatedListViewState
                           .toString());
                     case Status.COMPLETED:
                       return Column(children: [
-                        HomeListTittleWidget(
+                        const HomeListTittleWidget(
                             text:
                                 "Top Rated Film List"),
                         SizedBox(
@@ -79,7 +79,7 @@ class _TopRatedListViewState
                             height, value)
                       ]);
                     default:
-                      return Text("Hata");
+                      return const Text("Hata");
                   }
                 })),
           ],
