@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import 'cast_item.dart';
 
 class CastListView extends StatefulWidget {
-  Results movie;
-  CastListView({Key? key, required this.movie})
+  final Results movie;
+  const CastListView({Key? key, required this.movie})
       : super(key: key);
 
   @override
