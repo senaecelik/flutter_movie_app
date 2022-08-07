@@ -30,7 +30,7 @@ class WhiteBorderButton extends StatelessWidget {
         crossAxisAlignment:
             CrossAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.add,
             color: AppColors.whiteColor,
             size: 25,
